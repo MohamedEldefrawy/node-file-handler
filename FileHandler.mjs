@@ -1,4 +1,4 @@
-import {readFileSync} from 'fs';
+import {readFileSync, renameSync} from 'fs';
 
 export class FileHandler {
     _name;
@@ -25,8 +25,8 @@ export class FileHandler {
         }
     }
 
-    renameFile() {
-
+    renameFile(oldPath, newPath) {
+        renameSync(oldPath, newPath);
     }
 
     removeFile() {
