@@ -50,7 +50,12 @@ export class FileHandler {
         unlinkSync(this._name);
     }
 
-    readJsonFile() {
-
+    readJsonFile(name) {
+        try {
+            const data = JSON.parse(readFileSync(name, 'utf8'));
+            console.log(data)
+        } catch (err) {
+            console.error(err)
+        }
     }
 }
