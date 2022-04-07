@@ -1,4 +1,4 @@
-import {readFileSync, renameSync, unlinkSync, createReadStream} from 'fs';
+import {createReadStream, readFileSync, renameSync, unlinkSync, writeFile} from 'fs';
 import {createInterface} from 'readline'
 
 export class FileHandler {
@@ -19,8 +19,7 @@ export class FileHandler {
 
     readFile() {
         try {
-            const data = readFileSync(this._name, 'utf8')
-            console.log(data)
+            return readFileSync(this._name, 'utf8');
         } catch (err) {
             console.error(err)
         }
@@ -57,5 +56,12 @@ export class FileHandler {
         } catch (err) {
             console.error(err)
         }
+    }
+
+    writeFile(filename) {
+        let content = this.readFile();
+        writeFile(filename, content.toString(), function (error) {
+            console.log(error);
+        });
     }
 }
