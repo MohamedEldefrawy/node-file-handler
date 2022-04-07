@@ -1,3 +1,5 @@
+import {readFileSync} from 'fs';
+
 export class FileHandler {
     _name;
 
@@ -15,7 +17,12 @@ export class FileHandler {
     }
 
     readFile() {
-
+        try {
+            const data = readFileSync(this._name, 'utf8')
+            console.log(data)
+        } catch (err) {
+            console.error(err)
+        }
     }
 
     renameFile() {
