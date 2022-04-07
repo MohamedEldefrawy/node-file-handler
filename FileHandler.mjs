@@ -1,4 +1,5 @@
-import {readFileSync, renameSync,unlinkSync} from 'fs';
+import {readFileSync, renameSync, unlinkSync, createReadStream} from 'fs';
+import {createInterface} from 'readline'
 
 export class FileHandler {
     _name;
@@ -22,6 +23,22 @@ export class FileHandler {
             console.log(data)
         } catch (err) {
             console.error(err)
+        }
+    }
+
+    readFileLineByLine() {
+        try {
+            const readLine = createInterface({
+                input: createReadStream(this._name),
+                crlfDelay: Infinity
+            });
+
+            readLine.on('line', (line) => {
+                console.log(line);
+            });
+
+        } catch (err) {
+            console.error(err);
         }
     }
 
