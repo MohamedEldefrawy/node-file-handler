@@ -1,4 +1,4 @@
-import {createReadStream, readFileSync, renameSync, unlinkSync, writeFile} from 'fs';
+import {createReadStream, readFileSync, renameSync, unlinkSync, writeFile, existsSync, mkdir} from 'fs';
 import {createInterface} from 'readline'
 
 export class FileHandler {
@@ -63,5 +63,13 @@ export class FileHandler {
         writeFile(filename, content.toString(), function (error) {
             console.log(error);
         });
+    }
+
+    createDirectory(name) {
+        if (!existsSync(name)) {
+            mkdir(name, {recursive: true}, function (error) {
+                console.log(error);
+            });
+        }
     }
 }

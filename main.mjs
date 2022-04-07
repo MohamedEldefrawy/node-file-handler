@@ -6,4 +6,5 @@ fileHandler.renameFile('./test.txt', './test.txt');
 fileHandler.writeFile('./write-file.txt');
 fileHandler.readFileLineByLine();
 fileHandler.readJsonFile('./data.json');
-fileHandler.removeFile();
+// fileHandler.removeFile();
+fileHandler.createDirectory('testDir');
