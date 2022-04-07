@@ -1,4 +1,4 @@
-import {readFileSync, renameSync} from 'fs';
+import {readFileSync, renameSync,unlinkSync} from 'fs';
 
 export class FileHandler {
     _name;
@@ -30,7 +30,7 @@ export class FileHandler {
     }
 
     removeFile() {
-
+        unlinkSync(this._name);
     }
 
     readJsonFile() {
